@@ -16,6 +16,10 @@ More features incoming...
 __**This section is for contributors**__
 To start the development server and start working on the app, follow these steps:
 1. Clone this repo.
-2. All required packages are listed in the requirements.txt file, so,
-run `pip3 install -r requirements.txt` to install all packages required.
-3. Then run `python3 manage.py runserver`.
+2. Install Poetry, as this is the package manager this project uses.
+You can follow this link to install Poetry [docs](https://python-poetry.org/docs/)
+3. After successfully installing Poetry, you can optionally setup a virtual environment for development.
+> You should run `poetry config virtualenvs.in-project true` to make sure poetry acknowledges the environment
+4. Then run `poetry install` to install all dependencies.
+5. Setup pre-commit by running `pre-commit install`. This is important.
+3. Then run `poetry run python3 manage.py runserver`.
