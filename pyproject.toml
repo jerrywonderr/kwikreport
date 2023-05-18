@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "kwikreport"
+version = "0.1.0"
+description = "A simple web app for generating report for weld inspectors"
+authors = ["Jerry Wonder <jerrycul2001@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "^4.2.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
