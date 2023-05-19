@@ -26,5 +26,7 @@ jobs:
         curl -sSL https://install.python-poetry.org | python -
         poetry install --no-root --without dev
     - name: Run Tests
+      env: # Or as an environment variable
+        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
       run: |
         poetry run python manage.py test
