@@ -21,5 +21,6 @@ You can follow this link to install Poetry [docs](https://python-poetry.org/docs
 3. After successfully installing Poetry, you can optionally setup a virtual environment for development.
 > You should run `poetry config virtualenvs.in-project true` to make sure poetry acknowledges the environment
 4. Then run `poetry install` to install all dependencies.
-5. Setup pre-commit by running `pre-commit install`. This is important.
-3. Then run `poetry run python3 manage.py runserver`.
+5. Then run the `setup-hooks.sh` script to setup all neccessary hooks. **This is important.**
+> If you're on windows, you can use git-bash to run that script
+3. Finally run `poetry run python3 manage.py runserver`.
