@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: "pylint-linting"
+    name: pylint-linting
     runs-on: ubuntu-latest
     strategy:
       matrix:
