@@ -27,11 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Configure custom user model
+AUTH_USER_MODEL = 'user_profile.User'
 
 # Application definition
 
 INSTALLED_APPS = [
     'pages',
+    'user_profile',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
