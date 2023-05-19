@@ -28,10 +28,10 @@ jobs:
     - name: Run Tests
       env:
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
-        DJANGO_NAME: ${{ secrets.DJANGO_NAME }}
-        DJANGO_USER: ${{ secrets.DJANGO_USER }}
-        DJANGO_PASSWORD: ${{ secrets.DJANGO_PASSWORD }}
-        DJANGO_HOST: ${{ secrets.DJANGO_HOST }}
-        DJANGO_PORT: ${{ secrets.DJANGO_PORT }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        DB_HOST: ${{ secrets.DB_HOST }}
+        DB_PORT: ${{ secrets.DB_PORT }}
       run: |
         poetry run python manage.py test
