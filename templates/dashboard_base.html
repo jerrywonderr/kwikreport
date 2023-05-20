@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex">
+  {% include 'nav.html' %}
+  <main class="dashboard-content">
+    {% block dashboard_content %}{% endblock dashboard_content %}
+  </main>
+</div>
+{% endblock content %}
