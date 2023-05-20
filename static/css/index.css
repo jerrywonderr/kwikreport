@@ -1,3 +1,20 @@
+:root {
+  --primary-color: #462468;
+  --nav-width: 200px;
+}
 body {
   font-family: "Mukta", sans-serif;
 }
+
+/* GENERAL STYLES FOR DASHBOARD */
+.dashboard-nav {
+  width: var(--nav-width);
+  background-color: var(--primary-color);
+  height: 100vh;
+  color: whitesmoke;
+}
+
+.dashboard-content {
+  width: calc(100vw - var(--nav-width));
+}
+/* END OF GENERAL STYLES FOR DASHBOARD */
