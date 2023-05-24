@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from user_profile.manager import UserManager
 
 class User(AbstractBaseUser):
+    # pylint: disable=too-few-public-methods
     """Model for the user_profile app"""
     email = models.EmailField(max_length=255,unique=True,)
     is_active = models.BooleanField(default=True)
@@ -15,6 +16,12 @@ class User(AbstractBaseUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
+
+    class Meta:
+        """Meta class for user model"""
+
+        db_table = "profile"
+
     @property
     def is_staff(self):
         """the is_staff property of the user model"""
@@ -24,14 +31,14 @@ class User(AbstractBaseUser):
         """ string representation of the user_profile model """
         return f"{self.email}"
 
-    def has_perm(self):
+    def has_perm(self, *args): # pylint: disable=unused-argument
         """
         checks if a user have a particular permission
         not fully implemented yet
         """
         return True
 
-    def has_module_perms(self):
+    def has_module_perms(self, *args): # pylint: disable=unused-argument
         """
         checks if a user have a particular module permission
         not fully implemented yet
