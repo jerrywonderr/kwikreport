@@ -24,9 +24,8 @@
         <input type="submit" class="btn btn-primary" value="log in" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
-      <p class="text-white">Do not have an account yet? <a href="{% url 'signup' %}" class="text-light">Sign up</a></p>
+      <p class="text-white">Have an account already? <a href="{% url 'login' %}" class="text-light">Sign in</a></p>
     </div>
   </div>
-
 </main>
 {% endblock content %}
