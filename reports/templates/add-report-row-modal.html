@@ -1,0 +1,54 @@
+<!-- Add Report Column Modal -->
+<div
+  class="modal fade"
+  id="addNewReportRowModal"
+  tabindex="-1"
+  aria-labelledby="addNewReportRowModal"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add new row</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex align-items-center mb-3 gap-2">
+          <button
+            type="button"
+            class="btn custom-light-btn modal-generate-form"
+          >
+            Generate form
+          </button>
+          <div>
+            <span class="d-block text-danger"
+              >Warning! This will clear all data on this form</span
+            >
+            <span class="d-block text-muted"
+              >You only need to do this when you add a new column</span
+            >
+          </div>
+        </div>
+        <form></form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn custom-primary-btn modal-add-report-row"
+        >
+          Add row
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

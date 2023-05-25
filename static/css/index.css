@@ -2,14 +2,15 @@
   --kwik-primary: #462468;
   --kwik-primary-hover: #b386df;
   --kwik-primary-bg-hover: #8347bf3d;
-  --kwik-primary-light: #F7F7F8;
-  --kwik-black: #1D1C1C;
+  --kwik-primary-light: #f7f7f8;
+  --kwik-black: #1d1c1c;
+  --kwik-light-fill: #d9d9d9;
 
   --kwik-primary-shadow-sm: 1px 0px 2px 0px #5b4870;
 
   --nav-width: 250px;
 
-  --kwik-border-radius-base: 0.5rem;
+  --kwik-border-radius-base: 0.4rem;
 }
 body {
   font-family: "Mukta", sans-serif;
@@ -17,7 +18,40 @@ body {
   color: var(--kwik-black);
 }
 
+.text-light {
+  color: var(--kwik-primary-light) !important;
+}
+
 /* GENERAL STYLES */
+.custom-btn {
+  padding: 0.4rem 1rem;
+}
+.custom-btn:hover {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.custom-primary-btn {
+  background-color: var(--kwik-primary);
+  color: var(--kwik-primary-light);
+  border-radius: var(--kwik-border-radius-base);
+  font-weight: 600;
+}
+.custom-primary-btn:hover {
+  background-color: var(--kwik-light-fill) !important;
+  color: var(--kwik-black) !important;
+}
+.custom-light-btn {
+  background-color: var(--kwik-light-fill);
+  border-radius: var(--kwik-border-radius-base);
+  color: var(--kwik-black);
+  font-weight: 600;
+}
+.custom-light-btn:hover {
+  background-color: #c5c5c5 !important;
+  color: var(--kwik-black);
+  border: 1px solid var(--kwik-primary);
+}
+
 .section-heading-1 {
   font-size: 2.5rem;
   font-weight: 700;
@@ -39,7 +73,7 @@ body {
 .nav-content > .nav-item {
   display: block;
   text-align: start;
-  color: var(--bs-light);
+  color: var(--kwik-primary-light);
   text-decoration: none;
   margin: 0.5rem 0;
   padding: 0.6rem 1rem;
@@ -56,16 +90,18 @@ body {
 
 .nav-content > .nav-item.active {
   background-color: var(--kwik-primary-bg-hover);
-  box-shadow: var(--kwik-primary-shadow);
+  box-shadow: var(--kwik-primary-shadow-sm);
 }
+
 /* END OF GENERAL STYLES FOR DASHBOARD */
 
 @media (min-device-width: 768px) {
-  .dashboard-nav {
+  .dashboard-nav > div {
     width: var(--nav-width);
     background-color: var(--kwik-primary);
     height: 100vh;
-    color: whitesmoke;
+    color: var(--kwik-primary-light);
+    position: relative;
   }
 
   .dashboard-content {
