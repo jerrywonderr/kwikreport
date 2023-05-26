@@ -1,30 +1,14 @@
 'use strict';
 
-const defaultReport = {
-  title: 'New Report',
-  columns: [
-    'project name',
-    'report number',
-    'drawing number',
-    'spool number',
-    'joint number',
-    'part description',
-    'thickness',
-    'welder ID',
-    'WPS Number',
-    'visual inspection status',
-    'NDE required'
-  ],
-  rows: [],
-};
+import { displayToast, getReport, saveReport } from "./helpers/index.mjs";
 
-let report = defaultReport;
+let report;
 let addColumnModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addReportModal'));
 let addRowModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addNewReportRowModal'));
 let updateTitleTimeout;
 
-$(document).ready(() => {
-
+$(document).ready(async () => {
+  report = (await getReport()).response;
   setUpTitleSection(report.title); // Update title on load
   setupColumnsDiv(report.columns);
   setupReportTable(report.columns, report.rows); // Setup table on load
@@ -78,6 +62,14 @@ $(document).ready(() => {
     }
   });
   /* END OF HANDLE CHANGING THE TITLE */
+
+  /* SAVE THE REPORT */
+  $('.save-report-btn').on('click', async () => {
+    const request = await saveReport(report);
+    if (request) {
+      displayToast('Report saved successfully!')
+    }
+  });
 });
 
 const updateTitle = (title) => {
@@ -113,14 +105,6 @@ const showChangeTitleForm = () => {
   toggleTitleSection()
   updateTitleTimeout = setTimeout(toggleTitleSection, 3000);
 }
-
-const getReport = async (id) => {
-  const query = await fetch('/report');
-  if (!query.ok) {
-    return defaultReport;
-  }
-  return await query.json();
-};
 
 const updateColumnsDiv = (columnName) => {
   /**

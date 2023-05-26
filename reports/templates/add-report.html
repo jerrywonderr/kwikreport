@@ -25,7 +25,18 @@
 <div class="container-fluid p-md-3 add-report-container">
   <div class="row gap-3">
     <div class="col-12">
-      <a
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="report-title-container">
+            <span class="report-title">New Report</span>
+            <span class="btn btn-primary change-report-title-btn"
+              >change title</span
+            >
+          </h1>
+          <input class="form-control update-report-title-field" type="text" />
+        </div>
+        <div class="d-flex gap-2">
+          <a
         class="btn custom-btn custom-light-btn d-inline-flex align-items-center gap-1"
         href="{% url 'home' %}"
       >
@@ -37,22 +48,10 @@
         ></button
         ><span>close</span></a
       >
-    </div>
-    <div class="col-12">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h1 class="report-title-container">
-            <span class="report-title">New Report</span>
-            <span class="btn btn-primary change-report-title-btn"
-              >change title</span
-            >
-          </h1>
-          <input class="form-control update-report-title-field" type="text" />
-        </div>
-
-        <button type="button" class="btn custom-btn custom-primary-btn">
+        <button type="button" class="btn custom-btn custom-primary-btn save-report-btn">
           Save
         </button>
+        </div>
       </div>
     </div>
     <div class="col-12">
@@ -99,5 +98,5 @@
   </div>
 </div>
 {% endblock dashboard_content %} {% block extra_scripts %}
-<script src="{% static 'js/report.mjs' %}"></script>
+<script type="module" src="{% static 'js/report.mjs' %}"></script>
 {% endblock extra_scripts %}

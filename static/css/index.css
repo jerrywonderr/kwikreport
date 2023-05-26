@@ -98,6 +98,13 @@ body {
 
 /* END OF GENERAL STYLES FOR DASHBOARD */
 
+/* STYLING FOR THE TOAST */
+.base-toast-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+/* END OF STYLING FOR THE TOAST */
 @media (min-device-width: 768px) {
   .dashboard-nav > div {
     width: var(--nav-width);
