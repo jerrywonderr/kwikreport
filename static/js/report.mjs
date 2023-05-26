@@ -1,44 +1,7 @@
-$(document).ready(() => {
-  let report = defaultReport;
-  let addColumnModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addReportModal'));
-  // let addRowModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addNewReportRowModal'));
-
-  setupColumnsDiv(report.columns);
-  setupReportTable(report.columns, report.rows); // Setup table on load
-
-  $('.modal-add-report-column').on('click', () => {
-    const columnField = document.getElementById("report-column");
-    if (!columnField.reportValidity()) {
-      return;
-    }
-    const columnName = $(columnField).val();
-    if (report.columns.includes(columnName)) {
-      return;
-    }
-    report.columns.push(columnName);
-    updateColumnsDiv(columnName);
-    updateReportTableHeader(columnName);
-    addColumnModal.hide(); // Hide the modal
-    $(columnField).val(''); // Clear the field's content
-  });
-
-  $('.modal-add-report-row').on('click', () => {
-    const form = document.querySelector('#addNewReportRowModal form');
-    if (!form.reportValidity()) {
-      return;
-    }
-    console.log($(form).serializeArray());
-    const row = $(form).serializeArray();
-    report.rows.push(row);
-    updateReportTableRow(row, report.rows.length - 1, report.columns);
-  });
-
-  // Generate or regenrate form on button click
-  $('.modal-generate-form').on('click', () => generateFormContent(report.columns));
-});
+'use strict';
 
 const defaultReport = {
-  title: '',
+  title: 'New Report',
   columns: [
     'project name',
     'report number',
@@ -55,6 +18,102 @@ const defaultReport = {
   rows: [],
 };
 
+let report = defaultReport;
+let addColumnModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addReportModal'));
+let addRowModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addNewReportRowModal'));
+let updateTitleTimeout;
+
+$(document).ready(() => {
+
+  setUpTitleSection(report.title); // Update title on load
+  setupColumnsDiv(report.columns);
+  setupReportTable(report.columns, report.rows); // Setup table on load
+
+  $('.modal-add-report-column').on('click', () => {
+    const columnField = $("#report-column"); // This is in the modal for add report column
+    if (!columnField[0].reportValidity()) {
+      return;
+    }
+    const columnName = columnField.val();
+    if (report.columns.includes(columnName)) {
+      return;
+    }
+    report.columns.push(columnName);
+    updateColumnsDiv(columnName);
+    updateReportTableHeader(columnName);
+    addColumnModal.hide(); // Hide the modal
+    columnField.val(''); // Clear the field's content
+  });
+
+  $('.modal-add-report-row').on('click', () => {
+    const form = $('#addNewReportRowModal form');
+    if (!form[0].reportValidity()) {
+      return;
+    }
+
+    const row = form.serializeArray();
+    report.rows.push(row);
+    updateReportTableRow(row, report.rows.length - 1, report.columns);
+    form[0].reset();
+    addRowModal.hide(); // Hide the modal
+  });
+
+  // Generate or regenrate form on button click
+  $('.modal-generate-form').on('click', () => generateFormContent(report.columns));
+
+  /* HANDLE CHANGING THE TITLE */
+  $(".change-report-title-btn").on('click', showChangeTitleForm);
+
+  $(".update-report-title-field").on('input', () => {
+    const title = $('.update-report-title-field').val();
+    if (title) {
+      report.title = title;
+      if (updateTitleTimeout) {
+        clearTimeout(updateTitleTimeout);
+      }
+      updateTitleTimeout = setTimeout(() => {
+        updateTitle(report.title);
+        toggleTitleSection();
+      }, 1500);
+    }
+  });
+  /* END OF HANDLE CHANGING THE TITLE */
+});
+
+const updateTitle = (title) => {
+  /**
+   * Updates the report title in view
+   */
+  $('.add-report-container .report-title').text(title);
+}
+
+const setUpTitleSection = (title) => {
+  /**
+   * Simply updates the title element with the report title
+   * and sets the value of the input field for editing the title to the report title
+   */
+  $('.update-report-title-field').val(title);
+  $('.update-report-title-field').hide(title);
+  updateTitle(title);
+}
+
+const toggleTitleSection = () => {
+  /**
+   * This function hides the title and shows the report title form instead
+   */
+  $('.report-title-container').toggle();
+  $('.update-report-title-field').toggle();
+}
+
+const showChangeTitleForm = () => {
+  /**
+   * This function toggles the form and title text
+   * and also sets a timeout to toggle it back after
+   */
+  toggleTitleSection()
+  updateTitleTimeout = setTimeout(toggleTitleSection, 3000);
+}
+
 const getReport = async (id) => {
   const query = await fetch('/report');
   if (!query.ok) {
@@ -68,7 +127,12 @@ const updateColumnsDiv = (columnName) => {
    * Updates the column div i.e the div that shows the columns available in the report
    */
   const div = $('.add-report-container .columns-container');
-  div.append(`<p>${columnName}</p>`);
+  div.append(`<p class="d-flex align-items-center gap-3 report-name">${columnName}<button
+  type="button"
+  class="btn-close"
+  data-bs-dismiss="modal"
+  aria-label="Close"
+></button</p>`);
 }
 
 const setupColumnsDiv = (columns) => {
@@ -130,13 +194,10 @@ const updateReportTableRow = (row, index, columns) => {
   const body = $('.reports-view-container tbody');
   let htmlString = `<tr><td>${index}</td>`;
 
-  columns = columns.map(value => value.replace(' ', '_'));
+  // columns = columns.map(value => value.replace(' ', '_'));
 
-  Object.entries(row).map((value) => {
-    let entry = '(nil)'
-    if (columns.includes(value[0]) && value[1]) {
-      entry = value[1]
-    }
+  row.map((field) => {
+    let entry = field.value ? field.value : '(nil)';
     htmlString += `<td>${entry}</td>`;
   });
   htmlString += '</tr>';

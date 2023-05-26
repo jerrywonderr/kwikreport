@@ -22,6 +22,10 @@ body {
   color: var(--kwik-primary-light) !important;
 }
 
+.btn:focus {
+  box-shadow: none;
+}
+
 /* GENERAL STYLES */
 .custom-btn {
   padding: 0.4rem 1rem;
@@ -34,11 +38,10 @@ body {
   background-color: var(--kwik-primary);
   color: var(--kwik-primary-light);
   border-radius: var(--kwik-border-radius-base);
-  font-weight: 600;
 }
 .custom-primary-btn:hover {
-  background-color: var(--kwik-light-fill) !important;
-  color: var(--kwik-black) !important;
+  background-color: #6e5785 !important;
+  color: var(--kwik-primary-light) !important;
 }
 .custom-light-btn {
   background-color: var(--kwik-light-fill);
@@ -49,7 +52,7 @@ body {
 .custom-light-btn:hover {
   background-color: #c5c5c5 !important;
   color: var(--kwik-black);
-  border: 1px solid var(--kwik-primary);
+  box-shadow: 0 0 0.25rem rgb(210 200 219);
 }
 
 .section-heading-1 {
