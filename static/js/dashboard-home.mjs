@@ -1,15 +1,26 @@
 import { CONSTANTS } from "./helpers/constants.mjs";
-import { displayToast, dropReport, getAllReports } from "./helpers/index.mjs";
+import { displayToast, dropReport, getAllReports, getReport } from "./helpers/index.mjs";
 
 let reports;
 
 $(document).ready(async () => {
   // Load all report into container on page load
-  ({response: reports} = await getAllReports());
+  ({ response: reports } = await getAllReports());
 
   loadReportCardContainer(reports);
 
   $('.report-cards-container .report-card .delete-icon').on('click', (ev) => deleteHandler(ev));
+
+  $('.dashboard-home .add-report-btn').on('click', async () => {
+    // location.href = CONSTANTS.urlMappings.addReport;
+    const query = await getReport();
+    if (!query) {
+      displayToast('An error occured, please try again.')
+      return;
+    }
+    reports.push(query.response);
+    appendReportCard(query.response, reports.length);
+  });
 });
 
 const loadReportCardContainer = (reports) => {
@@ -19,7 +30,7 @@ const loadReportCardContainer = (reports) => {
   reports.forEach((report, index) => appendReportCard(report, index));
 }
 
-const appendReportCard= (report, index) => {
+const appendReportCard = (report, index) => {
   /**
    * Creates the report card and appends it to the report card container
    */
@@ -54,7 +65,7 @@ const deleteHandler = async (ev) => {
   const btn = $(ev.target);
   const reportID = btn.attr('data-report-id');
   const reportIndex = Number(btn.attr('data-report-index'));
-  const {response} = await dropReport(reportID);
+  const { response } = await dropReport(reportID);
   if (response) {
     displayToast('Report deleted successfully!');
     reports.splice(reportIndex, 1);

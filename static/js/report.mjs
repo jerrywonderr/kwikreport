@@ -8,9 +8,13 @@ let addRowModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('a
 let updateTitleTimeout;
 
 $(document).ready(async () => {
-  const report_id = $('.active-report').text() || localStorage.getItem('report-edit');
-  ({response: report} = await getReport(report_id));
-  console.log(report);
+  const report_id = $('.active-report').text();
+  const query = await getReport(report_id);
+  if (!query) {
+    displayToast('An error occured, please try again.')
+    return ;
+  }
+  report = query.response;
   setUpTitleSection(report.title); // Update title on load
   setupColumnsDiv(report.columns);
   setupReportTable(report.columns, report.rows); // Setup table on load
@@ -22,6 +26,7 @@ $(document).ready(async () => {
     }
     const columnName = columnField.val();
     if (report.columns.includes(columnName)) {
+      displayToast('An error occured, please try again.')
       return;
     }
     report.columns.push(columnName);
@@ -67,8 +72,8 @@ $(document).ready(async () => {
 
   /* SAVE THE REPORT */
   $('.save-report-btn').on('click', async () => {
-    const { response } = await saveReport(report);
-    if (response) {
+    const query= await saveReport(report);
+    if (query) {
       displayToast('Report saved successfully!');
     }
   });

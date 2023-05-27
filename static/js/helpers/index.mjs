@@ -23,7 +23,7 @@ export const getCookie = (cookieName) => {
 
 const parseResponse = (idealResponse) => {
   const details = JSON.parse(idealResponse.fields.data);
-  return { id: idealResponse.pk, ...details }
+  return { ...details, id: idealResponse.pk }
 }
 
 export const getReport = async (id) => {
@@ -46,7 +46,12 @@ export const getReport = async (id) => {
   };
   let data;
   if (id) {
-    const query = await fetch(`${CONSTANTS.urlMappings.getReport}?id=${id}`);
+    const query =
+      await fetch(`${CONSTANTS.urlMappings.getReport}?id=${id}`)
+        .catch(() => {
+          // Do nothing
+          console.log(err);
+        });
     if (!query.ok) {
       return null;
     }
@@ -59,7 +64,12 @@ export const getReport = async (id) => {
 
 export const getAllReports = async () => {
   let data;
-  const query = await fetch(CONSTANTS.urlMappings.getReports);
+  const query =
+    await fetch(CONSTANTS.urlMappings.getReports)
+      .catch(() => {
+        // Do nothing
+        console.log(err);
+      });
   if (!query.ok) {
     return null;
   }
@@ -77,13 +87,15 @@ export const saveReport = async (report) => {
     headers: {
       'X-CSRFToken': getCookie('csrftoken'),
     },
+  }).catch(() => {
+    // Do nothing
+    console.log(err);
   });
   if (!query.ok) {
     return null;
   }
   data = await query.json();
   data = parseResponse(data[0]);
-  localStorage.setItem('report-edit', data.id);
   return { response: data };
 };
 
@@ -93,6 +105,9 @@ export const dropReport = async (id) => {
     headers: {
       'X-CSRFToken': getCookie('csrftoken'),
     },
+  }).catch(() => {
+    // Do nothing
+    console.log(err);
   });
 
   return { response: query.ok };

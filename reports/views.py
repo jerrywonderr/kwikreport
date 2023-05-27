@@ -10,6 +10,8 @@ from django.http import HttpResponse, JsonResponse
 from django.core.serializers import serialize
 
 from reports.models import Report
+from reports.helpers import report_save
+
 
 @login_required
 @require_GET
@@ -45,14 +47,14 @@ def save_report(request):
     """Endpoint to save a report"""
     content = request.body.decode('utf-8')
     content = json.loads(content)
-    report = Report()
-    report.save_report(request.user, content)
+    report = report_save(request.user, content)
     return HttpResponse(report.to_json(), content_type="application/json")
+
 
 @login_required
 @require_http_methods(['DELETE'])
-def delete_report(request, report_id): # pylint: disable=unused-argument
+def delete_report(request, report_id):
     """Deletes a report"""
-    report = Report.objects.get(id=report_id) # pylint: disable=no-member
+    report = Report.objects.get(id=report_id, owner=request.user) # pylint: disable=no-member
     report.delete()
     return JsonResponse({'status': 'ok'})
