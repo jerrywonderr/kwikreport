@@ -21,6 +21,11 @@ export const getCookie = (cookieName) => {
   return "";
 }
 
+const parseResponse = (idealResponse) => {
+  const details = JSON.parse(idealResponse.fields.data);
+  return { id: idealResponse.pk, ...details }
+}
+
 export const getReport = async (id) => {
   const defaultReport = {
     title: 'New Report',
@@ -39,20 +44,34 @@ export const getReport = async (id) => {
     ],
     rows: [],
   };
-  const data = { response: defaultReport }
+  let data;
   if (id) {
-    const query = await fetch('/report');
+    const query = await fetch(`${CONSTANTS.urlMappings.getReport}?id=${id}`);
     if (!query.ok) {
       return null;
     }
-
-    data.response = await query.json();
+    data = await query.json();
+  } else {
+    return saveReport(defaultReport);
   }
-  return data;
+  return { response: parseResponse(data[0]) }
 };
 
+export const getAllReports = async () => {
+  let data;
+  const query = await fetch(CONSTANTS.urlMappings.getReports);
+  if (!query.ok) {
+    return null;
+  }
+  data = await query.json();
+  data = data.map(value => parseResponse(value));
+  return { response: data }
+};
+
+
 export const saveReport = async (report) => {
-  const query = await fetch('/report/', {
+  let data;
+  const query = await fetch(CONSTANTS.urlMappings.saveReport, {
     method: 'POST',
     body: JSON.stringify(report),
     headers: {
@@ -62,7 +81,21 @@ export const saveReport = async (report) => {
   if (!query.ok) {
     return null;
   }
-  return { response: await query.json() };
+  data = await query.json();
+  data = parseResponse(data[0]);
+  localStorage.setItem('report-edit', data.id);
+  return { response: data };
+};
+
+export const dropReport = async (id) => {
+  const query = await fetch(`${CONSTANTS.urlMappings.deleteReport}${id}/`, {
+    method: 'DELETE',
+    headers: {
+      'X-CSRFToken': getCookie('csrftoken'),
+    },
+  });
+
+  return { response: query.ok };
 };
 
 
