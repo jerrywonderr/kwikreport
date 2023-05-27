@@ -1,0 +1,29 @@
+<div
+  class="offcanvas offcanvas-start w-sm navbar-canvas"
+  tabindex="-1"
+  id="navOffcanvasDiv"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header justify-content-center">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">kwikreport</h5>
+  </div>
+  <div class="offcanvas-body">{% include 'nav/nav-content.html' %}</div>
+</div>
+
+<div class="dashboard-nav">
+  <div class="d-none d-md-flex flex-column p-3">
+    <h3 class="text-center my-3">kwikreport</h3>
+    {% include 'nav/nav-content.html' %}
+  </div>
+  <div class="d-block d-md-none">
+    <button
+      class="d-block d-md-none btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#navOffcanvasDiv"
+      aria-controls="navOffcanvasDiv"
+    >
+      Button with data-bs-target
+    </button>
+  </div>
+</div>

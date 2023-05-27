@@ -1,3 +1,5 @@
-# from django.contrib import admin
+""""Admin module for the report app"""
+from django.contrib import admin
+from reports.models import Report
 
-# Register your models here.
+admin.site.register(Report)

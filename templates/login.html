@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block extra_styles %}
+<style>
+  .login-form-container .row {
+    /* display: grid;
+    place-content: center; */
+    min-height: 100vh;
+    width: 100vw;
+  }
+
+  .login-form-container .col {
+    background-color: var(--kwik-primary);
+    box-shadow: var(--kwik-primary-shadow-sm);
+    border-radius: var(--kwik-border-radius-base);
+  }
+</style>
+{% endblock extra_styles%} {% block content %}
+<main class="container-fluid login-form-container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col col-10 col-md-5 px-5 py-4">
+      <form method="post" action="{% url 'login' %}" class="mb-2">
+        <h1 class="text-light text-center section-heading-1">kwikreport</h1>
+        <h3 class="text-light text-center section-heading-2">Login</h3>
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="log in" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      <p class="text-white">Do not have an account yet? <a href="{% url 'signup' %}" class="text-light">Sign up</a></p>
+    </div>
+  </div>
+
+</main>
+{% endblock content %}

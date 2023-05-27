@@ -1,0 +1,103 @@
+{% extends 'dashboard_base.html' %} {% load static %} {% block title %}
+<title>Home | KwikReport</title>
+{% endblock title %} {% block extra_styles %}
+<style>
+  .update-report-title-field {
+    width: 12rem;
+  }
+  .add-report-container .columns-container .report-name {
+    background-color: var(--kwik-primary);
+    color: var(--kwik-primary-light);
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--kwik-border-radius-base);
+    transition: all ease-in-out 0.15s;
+  }
+  .add-report-container .columns-container .report-name .btn-close {
+    background-color: var(--kwik-primary-light);
+  }
+  .add-report-container .columns-container .report-name:hover {
+    box-shadow: -1px 1px 0.25rem rgb(91 81 100);
+    transform: scale(0.9);
+    cursor: pointer;
+  }
+</style>
+{% endblock extra_styles %} {% block dashboard_content %} {% include 'add-report-column-modal.html' %} {% include 'add-report-row-modal.html' %}
+<div class="container-fluid p-md-3 add-report-container">
+  <p class="invisible active-report">{{report_id}}</p>
+  <div class="row gap-3">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="report-title-container">
+            <span class="report-title">New Report</span>
+            <span class="btn btn-primary change-report-title-btn"
+              >change title</span
+            >
+          </h1>
+          <input class="form-control update-report-title-field" type="text" />
+        </div>
+        <div class="d-flex gap-2">
+          <a
+        class="btn custom-btn custom-light-btn d-inline-flex align-items-center gap-1"
+        href="{% url 'home' %}"
+      >
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button
+        ><span>close</span></a
+      >
+        <button type="button" class="btn custom-btn custom-primary-btn save-report-btn">
+          Save
+        </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="m-0">Columns</h4>
+            <button
+              type="button"
+              class="btn custom-btn custom-primary-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#addReportModal"
+            >
+              Add column
+            </button>
+          </div>
+          <div class="d-flex gap-1 flex-wrap columns-container"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Rows</h4>
+        <button
+          type="button"
+          class="btn custom-btn custom-primary-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#addNewReportRowModal"
+        >
+          Add row
+        </button>
+      </div>
+      <div class="reports-view-container">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock dashboard_content %} {% block extra_scripts %}
+<script type="module" src="{% static 'js/report.mjs' %}"></script>
+{% endblock extra_scripts %}
