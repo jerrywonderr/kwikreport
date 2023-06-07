@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import environ
+import dj_database_url
 
 env = environ.Env(
     # set casting, default value
@@ -35,7 +36,7 @@ SECRET_KEY = env('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '.vercel.app']
 
 # Configure custom user model
 AUTH_USER_MODEL = 'user_profile.User'
@@ -82,21 +83,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'kwikreport.wsgi.application'
+WSGI_APPLICATION = 'kwikreport.wsgi.app'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
-    }
+    'default': dj_database_url.parse(env('DB_URL_STRING'))
 }
 
 

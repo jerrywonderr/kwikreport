@@ -1,1 +1,9 @@
-
+asgiref==3.6.0 ; python_version >= "3.9" and python_version < "4.0"
+dj-database-url==2.0.0 ; python_version >= "3.9" and python_version < "4.0"
+django-environ==0.10.0 ; python_version >= "3.9" and python_version < "4"
+django==4.2.1 ; python_version >= "3.9" and python_version < "4.0"
+pillow==9.5.0 ; python_version >= "3.9" and python_version < "4.0"
+psycopg2-binary==2.9.6 ; python_version >= "3.9" and python_version < "4.0"
+sqlparse==0.4.4 ; python_version >= "3.9" and python_version < "4.0"
+typing-extensions==4.5.0 ; python_version >= "3.9" and python_version < "4.0"
+tzdata==2023.3 ; python_version >= "3.9" and python_version < "4.0"
