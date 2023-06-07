@@ -36,7 +36,7 @@ SECRET_KEY = env('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['localhost', '.vercel.app']
 
 # Configure custom user model
 AUTH_USER_MODEL = 'user_profile.User'
