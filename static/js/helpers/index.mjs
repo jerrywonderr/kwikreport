@@ -6,11 +6,11 @@ export const getCookie = (cookieName) => {
    */
   let name = `${cookieName}=`;
   let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
+  let ca = decodedCookie.split(";");
 
   for (let i = 0; i < ca.length; i++) {
     let c = ca[i];
-    while (c.charAt(0) == ' ') {
+    while (c.charAt(0) == " ") {
       c = c.substring(1);
     }
 
@@ -19,39 +19,37 @@ export const getCookie = (cookieName) => {
     }
   }
   return "";
-}
+};
 
 const parseResponse = (idealResponse) => {
   const details = JSON.parse(idealResponse.fields.data);
-  return { ...details, id: idealResponse.pk }
-}
+  return { ...details, id: idealResponse.pk };
+};
 
 export const getReport = async (id) => {
   const defaultReport = {
-    title: 'New Report',
+    title: "New Report",
     columns: [
-      'project name',
-      'report number',
-      'drawing number',
-      'spool number',
-      'joint number',
-      'part description',
-      'thickness',
-      'welder ID',
-      'WPS Number',
-      'visual inspection status',
-      'NDE required'
+      "drawing number",
+      "spool number",
+      "joint number",
+      "part description",
+      "thickness",
+      "welder ID",
+      "WPS Number",
+      "visual inspection status",
+      "NDE required",
     ],
     rows: [],
   };
   let data;
   if (id) {
-    const query =
-      await fetch(`${CONSTANTS.urlMappings.getReport}?id=${id}`)
-        .catch(() => {
-          // Do nothing
-          console.log(err);
-        });
+    const query = await fetch(
+      `${CONSTANTS.urlMappings.getReport}?id=${id}`
+    ).catch(() => {
+      // Do nothing
+      console.log(err);
+    });
     if (!query.ok) {
       return null;
     }
@@ -59,33 +57,30 @@ export const getReport = async (id) => {
   } else {
     return saveReport(defaultReport);
   }
-  return { response: parseResponse(data[0]) }
+  return { response: parseResponse(data[0]) };
 };
 
 export const getAllReports = async () => {
   let data;
-  const query =
-    await fetch(CONSTANTS.urlMappings.getReports)
-      .catch(() => {
-        // Do nothing
-        console.log(err);
-      });
+  const query = await fetch(CONSTANTS.urlMappings.getReports).catch(() => {
+    // Do nothing
+    console.log(err);
+  });
   if (!query.ok) {
     return null;
   }
   data = await query.json();
-  data = data.map(value => parseResponse(value));
-  return { response: data }
+  data = data.map((value) => parseResponse(value));
+  return { response: data };
 };
-
 
 export const saveReport = async (report) => {
   let data;
   const query = await fetch(CONSTANTS.urlMappings.saveReport, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(report),
     headers: {
-      'X-CSRFToken': getCookie('csrftoken'),
+      "X-CSRFToken": getCookie("csrftoken"),
     },
   }).catch(() => {
     // Do nothing
@@ -101,9 +96,9 @@ export const saveReport = async (report) => {
 
 export const dropReport = async (id) => {
   const query = await fetch(`${CONSTANTS.urlMappings.deleteReport}${id}/`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'X-CSRFToken': getCookie('csrftoken'),
+      "X-CSRFToken": getCookie("csrftoken"),
     },
   }).catch(() => {
     // Do nothing
@@ -113,11 +108,10 @@ export const dropReport = async (id) => {
   return { response: query.ok };
 };
 
-
 export const displayToast = (message) => {
   CONSTANTS.TOAST_COUNT += 1;
   const uniqueClassID = `toast-${CONSTANTS.TOAST_COUNT}`;
-  const toastContainer = $('.base-toast-container');
+  const toastContainer = $(".base-toast-container");
   const htmlString = `
   <div class="toast ${uniqueClassID}" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body" style="background-color: var(--kwik-primary)">
@@ -132,4 +126,4 @@ export const displayToast = (message) => {
   // Display the toast
   const toast = bootstrap.Toast.getOrCreateInstance($(`.${uniqueClassID}`));
   toast.show();
-}
+};
