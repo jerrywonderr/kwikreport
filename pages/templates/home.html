@@ -2,10 +2,6 @@
 <title>Home | KwikReport</title>
 {% endblock title %} {% block extra_styles %}
 <style>
-  .report-card {
-    width: 20rem;
-  }
-
   .report-card .card-title {
     display: block;
     max-width: 150px;
@@ -24,13 +20,19 @@
     filter: brightness(0) saturate(100%) invert(18%) sepia(12%) saturate(6370%)
       hue-rotate(243deg) brightness(88%) contrast(97%);
   }
+  @media (min-device-width: 768px) {
+  .report-card {
+    max-width: 20rem;
+  }
+}
+
 </style>
 {% endblock extra_styles %} {% block dashboard_content %}
 <div class="container-fluid p-md-3 dashboard-home">
   <div class="row">
     <div class="col-12">
       <h1>Hello, {{request.user.email}}</h1>
-      <p class="current-time-text">Good afternoon</p>
+      <p class="current-time-text">Welcome back.</p>
     </div>
     <div class="col">
       <div class="d-flex justify-content-between mb-3">

@@ -37,14 +37,14 @@ const appendReportCard = (report, index) => {
   const htmlString = `
   <div class="card report-card report-card-${index}">
           <div class="row g-0">
-            <div class="col-md-4">
+            <div class="col-4">
               <img
                 src="/static/images/report-placeholder.png"
                 class="img-fluid rounded-start"
                 alt="${report.title} report on kwikreport"
               />
             </div>
-            <div class="col-md-8">
+            <div class="col-8">
               <div class="card-body h-100 d-flex flex-column">
                 <div >
                   <h5 class="text-truncate card-title">${report.title}</h5>
