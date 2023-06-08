@@ -2,7 +2,7 @@
 URL mappings for the pages app
 """
 from django.urls import path
-from user_profile.views import LoginView, LogoutView, signup
+from user_profile.views import LoginView, LogoutView, SignupView
 
 urlpatterns = [
     path(
@@ -11,5 +11,5 @@ urlpatterns = [
         name="login",
     ),
     path("logout", LogoutView.as_view(), name="logout"),
-    path("signup", signup, name="signup"),
+    path("signup", SignupView.as_view(), name="signup"),
 ]

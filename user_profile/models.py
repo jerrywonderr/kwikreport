@@ -7,6 +7,7 @@ from user_profile.manager import UserManager
 class User(AbstractBaseUser):
     # pylint: disable=too-few-public-methods
     """Model for the user_profile app"""
+    username = None
     email = models.EmailField(max_length=255,unique=True,)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

@@ -1,3 +1,4 @@
+{% load static %}
 <div
   class="offcanvas offcanvas-start w-sm navbar-canvas"
   tabindex="-1"
@@ -15,15 +16,16 @@
     <h3 class="text-center my-3">kwikreport</h3>
     {% include 'nav/nav-content.html' %}
   </div>
-  <div class="d-block d-md-none">
+  <div class="d-flex justify-content-between d-md-none p-2 shadow-sm" style="background-color:var(--kwik-primary-light);">
+    <h3 class="text-center my-3" style="color: var(--kwik-primary); font-weight: 500;">kwikreport</h3>
     <button
-      class="d-block d-md-none btn btn-primary"
+      class="d-block d-md-none btn"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#navOffcanvasDiv"
       aria-controls="navOffcanvasDiv"
     >
-      Button with data-bs-target
+    <image src="{% static 'images/menu.svg' %}" style="height: 2rem; width: 2rem" />
     </button>
   </div>
 </div>

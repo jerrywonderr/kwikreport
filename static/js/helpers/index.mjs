@@ -120,9 +120,9 @@ export const displayToast = (message) => {
   const toastContainer = $('.base-toast-container');
   const htmlString = `
   <div class="toast ${uniqueClassID}" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-body">
+    <div class="toast-body" style="background-color: var(--kwik-primary)">
       <div>
-        <p>${message}</p>
+        <p class="m-0" style="color: var(--kwik-primary-light)">${message}</p>
       </div>
     </div>
   </div>
