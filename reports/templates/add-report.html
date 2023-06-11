@@ -20,6 +20,10 @@
     transform: scale(0.9);
     cursor: pointer;
   }
+
+  .dropdown-item:hover {
+    cursor: pointer;
+  }
 </style>
 {% endblock extra_styles %} {% block dashboard_content %} {% include 'add-report-column-modal.html' %} {% include 'add-report-row-modal.html' %}
 <div class="container-fluid p-md-3 add-report-container">
@@ -36,22 +40,30 @@
           </h1>
           <input class="form-control update-report-title-field" type="text" />
         </div>
-        <div class="d-flex gap-2">
-          <a
-        class="btn custom-btn custom-light-btn d-inline-flex align-items-center gap-1"
-        href="{% url 'home' %}"
-      >
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button
-        ><span>close</span></a
-      >
-        <button type="button" class="btn custom-btn custom-primary-btn save-report-btn">
-          Save
-        </button>
+        <div class="d-flex flex-column">
+          <div class="btn-group">
+            <button type="button" class="btn btn-md custom-btn custom-light-btn save-report-btn">Save</button>
+            <button type="button" class="btn btn-md custom-btn custom-primary-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'view-report' report_id %}" class="dropdown-item">View report</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <p class="m-0 text-muted dropdown-item" style="font-weight: 700;">Visiblity: {{report.shareStatus}}</p>
+              <li>{% if report.public %}
+                <p class="dropdown-item make-report-private">Set private</p>
+                {% else %}
+                <p class="dropdown-item make-report-public">Set public</p>
+                {% endif %}
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a
+                class="dropdown-item"
+                href="{% url 'home' %}"
+              >Close
+              </a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

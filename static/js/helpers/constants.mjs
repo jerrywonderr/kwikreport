@@ -6,9 +6,11 @@ export const CONSTANTS = {
     getReport: '/report/find/',
     saveReport: '/report/save/',
     editReport: '/report/edit/',
+    markReportAsPrivate: '/report/private/',
+    markReportAsPublic: '/report/public/',
   },
   // This variable helps us to keep track of the number
   // of toast already displayed, and it helps us to create
-  // a unique class-id for each toast
+  // a unique class-name for each toast
   TOAST_COUNT: 1,
 }

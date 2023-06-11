@@ -11,7 +11,7 @@ class Report(models.Model):
         """This enum defines the possible values for the sharing state of a report"""
 
         PUBLIC = "PB", "Public"  # Share with public
-        NONE = "No", "None"  # Not shared
+        PRIVATE = "PR", "Private"  # Not shared
 
     id = models.UUIDField("id", primary_key=True, default=uuid4)
     owner = models.ForeignKey(
@@ -25,7 +25,7 @@ class Report(models.Model):
         "sharing",
         max_length=12,
         choices=SharingChoice.choices,
-        default=SharingChoice.NONE,
+        default=SharingChoice.PRIVATE,
     )
 
     class Meta:

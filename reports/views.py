@@ -20,7 +20,11 @@ def display_create_report_page(request, report_id=None):
     """This views handles report creation"""
     params = {}
     if report_id:
+        report = Report.objects.get(id=report_id, owner=request.user) # pylint: disable=no-member
+        report.public = report.is_shared()
+        report.shareStatus = report.get_sharing_display()
         params['report_id'] = report_id
+        params['report'] = report
     return render(request, 'add-report.html', params)
 
 
@@ -68,6 +72,7 @@ def make_report_public(request, report_id):
     try:
         report = Report.objects.get(id=report_id) # pylint: disable=no-member
         report.make_public()
+        report.save()
         status = True
     except Exception:
         # pass
@@ -83,6 +88,7 @@ def make_report_private(request, report_id):
     try:
         report = Report.objects.get(id=report_id) # pylint: disable=no-member
         report.make_private()
+        report.save()
         status = True
     except Exception:
         # pass
@@ -95,5 +101,5 @@ def view_report(request, report_id):
     """Makes a report viewable by the public"""
     report = Report.objects.get(id=report_id) # pylint: disable=no-member
     if report.is_shared():
-        return render(request, "view-report.html", {"report": report})
+        return render(request, "view-report.html", {"report": report, "report_id": report_id})
     return render(request, "view-report-error.html")
