@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load static %} {% block extra_styles %}
+<style></style>
+{% endblock extra_styles%} {% block content %}
+<main class="container-fluid">
+  <div
+    class="row align-items-center justify-content-center"
+    style="height: 100vh"
+  >
+    <div class="col-4">
+      <img
+        src="{% static 'images/404.svg' %}"
+        alt="404 report not found"
+        class="img-fluid"
+      />
+      <h1 class="text-center report-title">Report not found</h1>
+      <p class="text-center">
+        The report you're trying to access is not in our list of shared reports.
+        <em>
+          <b>
+            If you're sure this report exists, then confirm that it has been
+            made public.
+          </b>
+        </em>
+      </p>
+    </div>
+  </div>
+</main>
+{% endblock content %}

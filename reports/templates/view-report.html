@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<main class="container-fluid p-md-3 add-report-container">
+  <p class="invisible active-report">{{report_id}}</p>
+  <div class="row gap-3">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="report-title-container">
+            <span class="report-title">{{report.title}}t</span>
+          </h1>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="reports-view-container">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}
+{% block extra_scripts %}
+<script type="module" src="{% static 'js/view-report.mjs' %}"></script>
+{% endblock extra_scripts %}

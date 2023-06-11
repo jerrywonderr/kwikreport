@@ -108,6 +108,34 @@ export const dropReport = async (id) => {
   return { response: query.ok };
 };
 
+export const makeReportPrivate = async (id) => {
+  const query = await fetch(`${CONSTANTS.urlMappings.markReportAsPrivate}${id}/`, {
+    method: "PUT",
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken"),
+    },
+  }).catch(() => {
+    // Do nothing
+    console.log(err);
+  });
+
+  return { response: query.ok };
+}
+
+export const makeReportPublic = async (id) => {
+  const query = await fetch(`${CONSTANTS.urlMappings.markReportAsPublic}${id}/`, {
+    method: "PUT",
+    headers: {
+      "X-CSRFToken": getCookie("csrftoken"),
+    },
+  }).catch(() => {
+    // Do nothing
+    console.log(err);
+  });
+
+  return { response: query.ok };
+}
+
 export const displayToast = (message) => {
   CONSTANTS.TOAST_COUNT += 1;
   const uniqueClassID = `toast-${CONSTANTS.TOAST_COUNT}`;
