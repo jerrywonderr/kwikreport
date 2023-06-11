@@ -19,11 +19,15 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg navbar-custom bg-navbar-custom py-3 px-4"
+      class="navbar navbar-expand-sm navbar-custom bg-navbar-custom py-3 px-sm-2 px-lg-4"
     >
       <div class="container-fluid">
-        <img src="img/logo.svg" />
-        <img src="img/Kwikreport.svg" />
+        <div class="row">
+          <div class="col-md-12">
+            <img class="img-fluid" src="img/logo.svg" />
+            <img class="img-fluid" src="img/Kwikreport.svg" />
+          </div>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -66,7 +70,7 @@
             </p>
             <button class="btn btn-primary btn-lg">
               <a href="https://kwikreport.vercel.app/" target="_blank">
-                <span class="text-warning">Get started</span>
+                <span class="text-body">Get started</span>
               </a>
             </button>
           </div>
@@ -100,9 +104,11 @@
       <div class="container">
         <div class="row text-center g-4">
           <div class="col-md">
-            <div class="card card-custom text-light">
+            <div class="card card-custom h-100 text-light">
               <div class="card-body text-center">
-                <i class="bi-file-text mb-3"></i>
+                <div class="h1">
+                  <i class="bi-file-text"></i>
+                </div>
                 <h3 class="card-title mb-3">Easy Sign Up</h3>
                 <h3 class="card-image">
                   <img
@@ -118,9 +124,11 @@
             </div>
           </div>
           <div class="col-md">
-            <div class="card card-custom text-light">
+            <div class="card card-custom h-100 text-light">
               <div class="card-body text-center">
-                <i class="bi-filter-square mb-3"></i>
+                <div class="h1">
+                  <i class="bi-filter-square"></i>
+                </div>
                 <h3 class="card-title mb-3">Dashboard</h3>
                 <h3 class="card-image">
                   <img
@@ -130,16 +138,17 @@
                   />
                 </h3>
                 <p class="card-text">
-                  A user friendly Dashboard where you can easily create new
-                  reports and edit existing ones
+                  Easily create new reports and edit existing ones
                 </p>
               </div>
             </div>
           </div>
           <div class="col-md">
-            <div class="card card-custom text-light">
+            <div class="card card-custom h-100 text-light">
               <div class="card-body text-center">
-                <i class="bi-pencil mb-3"></i>
+                <div class="h1">
+                  <i class="bi-pencil"></i>
+                </div>
                 <h3 class="card-title mb-3">Edit with ease</h3>
                 <h3 class="card-image">
                   <img
@@ -155,9 +164,13 @@
             </div>
           </div>
           <div class="col-md">
-            <div class="card card-custom text-light">
+            <div class="card card-custom h-100 text-light">
               <div class="card-body text-center">
-                <i class="bi-save2 mb-3"></i>
+                <div class="h1">
+                  <i class="bi-save2"></i>
+                </div>
+            <div class="card card-custom text-light">
+              <div class=
                 <h3 class="card-title mb-3">Save and Share</h3>
                 <h3 class="card-image">
                   <img
@@ -179,6 +192,8 @@
     <!-- About -->
     <section id="about">
       <div class="container">
+        <div class="row align-items-start">
+          <div class="col-md p-3">
         <div class="row align-items-center justify-content-between">
           <div class="col-md p-5">
             <h2>About</h2>
@@ -188,13 +203,13 @@
               Most times, Inspectors would have to take work home, or work extra
               hours to prepare and send these reports. Having a tool that can
               help them prepare and key in the data needed at the point of
-              collection can greatly reduced the stress and extra time needed to
+              collection can greatly reduce the stress and extra time needed to
               get these reports ready. With Kwikreport, we aim to give
               Inspectors an easy to use tool that can help them quickly create,
               edit and send their reports.
             </p>
           </div>
-          <div class="col-md p-5">
+          <div class="col-md p-3">
             <h2>Contributors</h2>
             <p>
               This web app is a Portfolio Project for ALX Software Engineering
