@@ -1,0 +1,27 @@
+
+.navbar-custom {
+    background-color: #442A51;
+}
+.nav-link {
+    color: #fff;
+  }
+.navbar-toggler {
+    background-color: #fff;
+}
+.my-intro {
+    background-color: #442A51;
+}
+.card-custom {
+    background-color: #442A51;
+    height: 375px;
+}
+h1 {
+    font-size: 32px;
+    font-family: Calibri;
+    font-weight: bold;
+    text-align: center;
+    color: #442A51;
+  }
+p {
+    font-family: 'Times New Roman', Times, serif;
+}
