@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% block extra_styles %}
+<style>
+  .login-form-container .row {
+    /* display: grid;
+    place-content: center; */
+    min-height: 100vh;
+    width: 100vw;
+  }
+
+  .login-form-container .col {
+    background-color: var(--kwik-primary);
+    box-shadow: var(--kwik-primary-shadow-sm);
+    border-radius: var(--kwik-border-radius-base);
+  }
+
+  label {
+    color: var(--kwik-primary-light);
+  }
+
+  .form-error-div {
+    border-radius: 5px;
+  }
+
+  .form-error {
+    color: inherit;
+    font-size: small;
+    margin: 0px;
+    opacity: 1;
+    transition: all 300ms ease-in-out;
+  }
+</style>
+{% endblock extra_styles%} {% block content %}
+<main class="container-fluid p-md-3 add-report-container">
+  <!-- <p class="invisible active-report">{{report_id}}</p> -->
+  <div class="row gap-3">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="report-title-container">
+            <span class="report-title">{{report.title}}t</span>
+          </h1>
+          <!-- <input class="form-control update-report-title-field" type="text" /> -->
+        <!-- </div>
+        <div class="d-flex gap-2">
+          <a
+        class="btn custom-btn custom-light-btn d-inline-flex align-items-center gap-1"
+        href="{% url 'home' %}"
+      >
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button
+        ><span>close</span></a
+      >
+        <button type="button" class="btn custom-btn custom-primary-btn save-report-btn">
+          Save
+        </button>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="m-0">Columns</h4>
+            <!-- <button
+              type="button"
+              class="btn custom-btn custom-primary-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#addReportModal"
+            >
+              Add column
+            </button> -->
+          </div>
+          <!-- <div class="d-flex gap-1 flex-wrap columns-container"></div> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Rows</h4>
+        <button
+          type="button"
+          class="btn custom-btn custom-primary-btn"
+          data-bs-toggle="modal"
+          data-bs-target="#addNewReportRowModal"
+        >
+          Add row
+        </button>
+      </div>
+      <div class="reports-view-container">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="table-light">
+              <tr></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock content %}

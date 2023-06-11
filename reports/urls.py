@@ -17,4 +17,5 @@ urlpatterns = [
     path("find/", find_report, name="find-report"),
     path("save/", save_report, name="save-report"),
     path("drop/<str:report_id>/", delete_report, name="delete-report"),
+    path("share/<str:report_id>/", delete_report, name="share-report"),
 ]
