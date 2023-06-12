@@ -1,13 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<main class="container-fluid p-md-3 add-report-container">
+<h1
+style="color: var(--kwik-primary-light);
+background-color: var(--kwik-primary);
+font-weight: 700;"
+class="m-0 p-3">kwikreport</h1>
+<main class="container-fluid add-report-container">
   <p class="invisible active-report">{{report_id}}</p>
-  <div class="row gap-3">
+  <div class="row">
     <div class="col-12">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h1 class="report-title-container">
-            <span class="report-title">{{report.title}}t</span>
-          </h1>
+      <h3 class="report-title-container">
+        <span class="report-title">{{report.title}}t</span>
+      </h3>
       </div>
     </div>
     <div class="col-12">

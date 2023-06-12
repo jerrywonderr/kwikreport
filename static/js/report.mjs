@@ -99,6 +99,7 @@ $(document).ready(async () => {
     const query= await makeReportPublic(report_id);
     if (query) {
       displayToast('Report status updated!');
+      location.reload();
     }
   });
 
@@ -108,6 +109,7 @@ $(document).ready(async () => {
     const query= await makeReportPrivate(report_id);
     if (query) {
       displayToast('Report status updated!');
+      location.reload();
     }
   });
 });
