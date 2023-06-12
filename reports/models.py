@@ -58,7 +58,7 @@ class Report(models.Model):
 
     def is_not_shared(self) -> bool:
         """Checks if a report is private"""
-        return self.sharing == self.SharingChoice.NONE
+        return self.sharing == self.SharingChoice.PRIVATE
 
     def make_public(self):
         """Makes a report public"""
@@ -68,4 +68,4 @@ class Report(models.Model):
     def make_private(self):
         """Makes a report private"""
         if not self.is_not_shared():
-            self.sharing = self.SharingChoice.NONE
+            self.sharing = self.SharingChoice.PRIVATE
