@@ -3,7 +3,7 @@
 [![Pylint](https://github.com/jerrywonderr/kwikreport/actions/workflows/pylint.yml/badge.svg)](https://github.com/jerrywonderr/kwikreport/actions/workflows/pylint.yml)
 ## Introduction
 Kwikreport is a simple web app that aims to help weld inspection officers easily
-generate a weld inspection report. You can check it out [here](https://kwikreport.vercel.app/), or read the project [Blog article](https://solvit.hashnode.dev/kwikreport-a-report-generation-helper-for-weld-inspection-officers)
+generate a weld inspection report. You can check it out [here](https://kwikreport.vercel.app/), or read the project [Blog article](https://solvit.hashnode.dev/kwikreport-a-report-generation-helper-for-weld-inspection-officers).
 Authors of the Project include:
 - [Jeremiah Joseph](https://linkedin.com/in/devwonder) - A Full Stack Developer
 - [Charles Ezebuike](https://www.linkedin.com/in/charles-ezebuike-98960667/) - A Certified Welding Inspector
@@ -16,7 +16,7 @@ account management).
 - Ability to create, edit and delete reports.
 - Ability to allow others view your reports (this will be via the web app).
 - Finally, ability to export reports to spreadsheets format and download.
-You can view a live demo [here](https://youtu.be/5WjDy7pYqd4)
+You can view a live demo [here](https://youtu.be/5WjDy7pYqd4).
 Other features we intend to implement include:
 - adding images to the header of each report
 - editing and removing rows/columns
