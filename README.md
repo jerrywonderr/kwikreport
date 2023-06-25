@@ -4,9 +4,11 @@
 ## Introduction
 Kwikreport is a simple web app that aims to help weld inspection officers easily
 generate a weld inspection report. You can check it out [here](https://kwikreport.vercel.app/), or read the project [Blog article](https://solvit.hashnode.dev/kwikreport-a-report-generation-helper-for-weld-inspection-officers).
+
 Authors of the Project include:
 - [Jeremiah Joseph](https://linkedin.com/in/devwonder) - A Full Stack Developer
 - [Charles Ezebuike](https://www.linkedin.com/in/charles-ezebuike-98960667/) - A Certified Welding Inspector
+
 Both are currently in the ALX Software Engineering Program, and this project is in fulfillment of one of the many requirements of the program.
 ## Features
 There are a lot of features incoming but we are putting our focus on the MVP for
@@ -17,6 +19,7 @@ account management).
 - Ability to allow others view your reports (this will be via the web app).
 - Finally, ability to export reports to spreadsheets format and download.
 You can view a live demo [here](https://youtu.be/5WjDy7pYqd4).
+
 Other features we intend to implement include:
 - adding images to the header of each report
 - editing and removing rows/columns
@@ -25,6 +28,7 @@ Other features we intend to implement include:
 - and much more ...
 ## Contributing
 __**This section is for contributors**__
+
 To start the development server and start working on the app, follow these steps:
 1. Clone this repo.
 2. Install Poetry, as this is the package manager this project uses.
