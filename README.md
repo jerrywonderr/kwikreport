@@ -1,6 +1,7 @@
 # Kwikreport
 [![Django CI](https://github.com/jerrywonderr/kwikreport/actions/workflows/django.yml/badge.svg)](https://github.com/jerrywonderr/kwikreport/actions/workflows/django.yml)
 [![Pylint](https://github.com/jerrywonderr/kwikreport/actions/workflows/pylint.yml/badge.svg)](https://github.com/jerrywonderr/kwikreport/actions/workflows/pylint.yml)
+![Alt Text](edit-report.png)
 ## Introduction
 Kwikreport is a simple web app that aims to help weld inspection officers easily
 generate a weld inspection report. You can check it out [here](https://kwikreport.vercel.app/), or read the project [Blog article](https://solvit.hashnode.dev/kwikreport-a-report-generation-helper-for-weld-inspection-officers).
